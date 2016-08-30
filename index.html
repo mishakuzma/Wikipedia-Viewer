@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<style>
+	body {
+	  background-color: #b3ffff;
+	}
+
+	.frontFace {
+	  font-family: helvetica;
+	}
+</style>
+
+<link href="https://code.jquery.com/jquery-2.2.4.min.js">
+<!-- jQuery 2.2.4 -->
+<script>
+	$(document).ready(function() {
+	  $("#searchQuery").on("enter", function(inputText) {
+	    $.ajax({
+	      url: "https://en.wikipedia.org/w/api.php?action=query&titles=" + encodeURIComponent() + "&prop=revisions&rvprop=content&format=json",
+	      success: function(inJSON){
+	        
+	      }
+	    });
+	  });
+
+	});
+</script>
+
+<html>
+<head></head>
+<body>
+  <div class="container">
+    <a href="https://en.wikipedia.org/wiki/Special:Random" class="row text-center frontFace">Click for a random wikipedia article.</a>
+    <input class="row text-center" id="searchQuery"></input>
+  	<p class="row text-center">Type in your search query and press enter</p>
+  </div>
+</body>
+</html>
