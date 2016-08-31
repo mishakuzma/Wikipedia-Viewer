@@ -13,13 +13,19 @@
 <!-- jQuery 2.2.4 -->
 <script>
 	$(document).ready(function() {
-	  $("#searchQuery").on("enter", function(inputText) {
-	    $.ajax({
-	      url: "https://en.wikipedia.org/w/api.php?action=query&titles=" + encodeURIComponent() + "&prop=revisions&rvprop=content&format=json",
-	      success: function(inJSON){
-	        
-	      }
-	    });
+	  $("#searchQuery").on("keypress", function(event) {
+	    if (event.keyCode == 13) {
+	      alert("Enter was pressed");
+	      var x = document.getElementById("searchQuery");
+	      alert(x.value);
+	      $.ajax({
+	        url: "http://en.wikipedia.org/w/api.php?action=query&titles=" + encodeURIComponent(x.value) + "&prop=revisions&rvprop=content&format=json",
+	        success: function(inJSON) {
+	          alert(JSON.stringify(inJSON));
+	        },
+	        error: alert("Fail")
+	      });
+	    };
 	  });
 
 	});
@@ -30,7 +36,7 @@
 <body>
   <div class="container">
     <a href="https://en.wikipedia.org/wiki/Special:Random" class="row text-center frontFace">Click for a random wikipedia article.</a>
-    <input class="row text-center" id="searchQuery"></input>
+    <input type="text" class="row text-center" id="searchQuery"></input>
   	<p class="row text-center">Type in your search query and press enter</p>
   </div>
 </body>
