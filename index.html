@@ -36,14 +36,16 @@ function displayWiki(wikiJson) {
 <head></head>
 <body>
 	<div class="container">
-	    <div class="row text-center">
-	      <a href="https://en.wikipedia.org/wiki/Special:Random" class="text-center frontFace">Click for a random wikipedia article.</a>
-	    </div>
+    <div class="row text-center">
+      <a href="https://en.wikipedia.org/wiki/Special:Random" class="text-center frontFace">Click for a random wikipedia article.</a>
+    </div>
     <div class="row text-center">
       <input type="text" class="text-center" id="searchQuery"></input>
     </div>
 
     <p class="row text-center">Type in your search query and press enter</p>
+    <div id="results">
+    </div>
   </div>
 </body>
 </html>

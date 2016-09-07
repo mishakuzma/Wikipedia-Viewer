@@ -3,5 +3,9 @@
 function displayWiki(wikiJson) {
   var pagesArray = wikiJson["query"]["pageids"];
   for(var i = 0; i < pagesArray.length; i++){
-    var title = wikiJson["query"]  
+    var title = wikiJson["query"]["pages"][pagesArray[i]]["title"];
+    var extract = wikiJson["query"]["pages"][pagesArray[i]]["extract"];
+    $("#results").html("")
+    $("#results").append("<div class=row>" + title + " " + extract + "<a href=http://en.wikipedia.org/?curid="+ pagesArray[i]+"> Link</a> </div>");
   }
+}
