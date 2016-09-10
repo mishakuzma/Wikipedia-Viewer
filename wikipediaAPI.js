@@ -6,6 +6,6 @@ function displayWiki(wikiJson) {
     var title = wikiJson["query"]["pages"][pagesArray[i]]["title"];
     var extract = wikiJson["query"]["pages"][pagesArray[i]]["extract"];
     $("#results").html("")
-    $("#results").append("<div class=row>" + title + " " + extract + "<a href=http://en.wikipedia.org/?curid="+ pagesArray[i]+"> Link</a> </div>");
+    $("#results").append("<div class=row><a href=http://en.wikipedia.org/?curid="+ pagesArray[i]+">" + title + "</a> " + extract + "</div>");
   }
 }

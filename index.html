@@ -18,7 +18,7 @@
 		      alert("Enter was pressed");
 		      var x = document.getElementById("searchQuery");
 		      alert(encodeURIComponent(x.value));
-		      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles="+ encodeURIComponent(x.value)+"&prop=revisions&rvprop=content&callback=?";
+		      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles="+ encodeURIComponent(x.value)+"&prop=extracts&rvprop=content&callback=?";
 		      console.log(apiUrl);
 		      $.getJSON(apiUrl, function(inJson){
 		        alert(inJson);
