@@ -7,29 +7,38 @@
 	.frontFace {
 	  font-family: helvetica;
 	}
+
+	#results {
+	  background-color: #b3b5b4
+	}
 </style>
 
 <link href="https://code.jquery.com/jquery-2.2.4.min.js">
 <!-- jQuery 2.2.4 -->
+<script src="wikipediaAPI.js"></script>
 <script>
 	$(document).ready(function() {
-	  	$("#searchQuery").on("keypress", function(event) {
-		    if (event.keyCode == 13) {
-		      alert("Enter was pressed");
-		      var x = document.getElementById("searchQuery");
-		      alert(encodeURIComponent(x.value));
-		      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles="+ encodeURIComponent(x.value)+"&prop=extracts&rvprop=content&callback=?";
-		      console.log(apiUrl);
-		      $.getJSON(apiUrl, function(inJson){
-		        alert(inJson);
-		      });
+	<!--Tell user not to use https-->
+
+	  if (window.location.protocol == "https:") {
+	    $("#results").html("");
+	    alert("You are using https. We can't access wikipedia if https is used. Please access this page using http. You can do this by changing the 'https' in your addressbar into 'http'.");
+	  };
+
+	  <!-- If enter is pressed, search wikipedia and display results-->
+	  $("#searchQuery").on("keypress", function(event) {
+	    if (event.keyCode == 13) {
+	      var x = document.getElementById("searchQuery");
+	      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + encodeURIComponent(x.value) +
+	       "&prop=extracts&rvprop=content&indexpageids=&redirects=1&exintro=&callback=?";
+	      console.log(apiUrl);
+	      $.getJSON(apiUrl, function(inJson) {
+	        displayWiki(inJson);
+	      });
 	    };
 	  });
 	});
 
-function displayWiki(wikiJson) {
-  alert(JSON.stringify(wikiJson));
-}
 </script>
 
 <html>
