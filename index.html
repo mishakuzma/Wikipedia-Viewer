@@ -15,6 +15,7 @@
 
 <link href="https://code.jquery.com/jquery-2.2.4.min.js">
 <!-- jQuery 2.2.4 -->
+<script src="wikipediaAPI.js"></script>
 <script>
 	$(document).ready(function() {
 	<!--Tell user not to use https-->
@@ -28,7 +29,8 @@
 	  $("#searchQuery").on("keypress", function(event) {
 	    if (event.keyCode == 13) {
 	      var x = document.getElementById("searchQuery");
-	      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + encodeURIComponent(x.value) + "&prop=extracts&rvprop=content&indexpageids=&redirects=1&callback=?";
+	      var apiUrl = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles=" + encodeURIComponent(x.value) +
+	       "&prop=extracts&rvprop=content&indexpageids=&redirects=1&exintro=&callback=?";
 	      console.log(apiUrl);
 	      $.getJSON(apiUrl, function(inJson) {
 	        displayWiki(inJson);
@@ -37,9 +39,6 @@
 	  });
 	});
 
-function displayWiki(wikiJson) {
-  alert(JSON.stringify(wikiJson));
-}
 </script>
 
 <html>
